@@ -10,10 +10,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.10.2" // Может помочь явно указать лаунчер
+    testImplementation platform("org.junit:junit-bom:5.10.2") // Замени BOM на актуальную версию
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 test {
+    systemProperty 'file.encoding', 'UTF-8'; workingDir = file('build')
     useJUnitPlatform()
 }
